@@ -1,6 +1,7 @@
 package brockbadgers.foodme.Activities;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater searchInflater = LayoutInflater.from(this);
 
         View searchView = searchInflater.inflate(R.layout.search_actionbar, null);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.logored));
 
         final SearchView search = (SearchView) searchView.findViewById(R.id.searchBar);
 
