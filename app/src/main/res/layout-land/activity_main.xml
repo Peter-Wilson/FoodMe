@@ -16,4 +16,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         tools:context="brockbadgers.foodme.Activities.MapsActivity" />
+    <fragment
+        android:id="@+id/restaurant_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="brockbadgers.foodme.Fragments.RestaurantFragment" />
 </LinearLayout>

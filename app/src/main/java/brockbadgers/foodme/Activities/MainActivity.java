@@ -28,9 +28,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import brockbadgers.foodme.Fragments.RestaurantFragment;
+import brockbadgers.foodme.Fragments.dummy.DummyContent;
 import brockbadgers.foodme.R;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, RestaurantFragment.OnListFragmentInteractionListener {
 
     private GoogleMap mMap;
     private final int MY_PERMISSIONS_LOCATION = 0;
@@ -130,6 +132,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
             }
         });
+    }
+
+    public void onListFragmentInteraction(DummyContent.DummyItem uri){
+        //TODO: Change dummy item and content to the actual restaurant content
+        //you can leave it empty
     }
 
     @Override
