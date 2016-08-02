@@ -1,4 +1,4 @@
-package brockbadgers.foodme.activities;
+package brockbadgers.foodme.Activities;
 
 import android.app.Activity;
 import android.content.Intent;

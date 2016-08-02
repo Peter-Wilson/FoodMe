@@ -28,7 +28,7 @@ public class RestaurantListAdapter extends ArrayAdapter<Restaurant> implements V
     ImageLoader imageLoader;
 
     public RestaurantListAdapter(Context context, List<Restaurant> list) {
-        super(context, R.layout.list_item_product, list);
+        super(context, R.layout.list_item_restaurant, list);
         mContext = context;
         imageLoader = ImageLoader.getInstance();
         if (context != null) {
@@ -57,32 +57,31 @@ public class RestaurantListAdapter extends ArrayAdapter<Restaurant> implements V
     public void onClick(View v) {
 
     }
-    // TODO: change this to the new view
+
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         //if (view == null) {
-        Restaurant product = getItem(position);
+        Restaurant restaurant = getItem(position);
         LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = li.inflate(R.layout.list_item_product, parent, false);
+        view = li.inflate(R.layout.list_item_restaurant, parent, false);
 
-        TextView productName = (TextView)view.findViewById(R.id.product_name);
-        TextView productPrice = (TextView)view.findViewById(R.id.product_price);
-        ImageView productIcon = (ImageView)view.findViewById(R.id.product_icon);
+        TextView number = (TextView)view.findViewById(R.id.restaurant_number);
+        TextView name = (TextView)view.findViewById(R.id.restaurant_name);
+        TextView address = (TextView)view.findViewById(R.id.restaurant_address);
+        ImageView rating = (ImageView)view.findViewById(R.id.restaurant_rating);
 
         // Populate item's widgets
-        productName.setText(product.getTitle());
-        Locale locale = new Locale("en", "US");
-        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-        productPrice.setText(currencyFormatter.format(product.getPrice()) + " from Amazon");
+        number.setText(position);
+        name.setText(restaurant.getName());
+        address.setText(restaurant.getDisplayAddress());
 
         // Display returned image or a default
-        if(product.getImageUrl() != "") {
-            imageLoader.displayImage(product.getImageUrl(), productIcon);
+        if(restaurant.getRatingImgUrl() != "") {
+            imageLoader.displayImage(restaurant.getRatingImgUrl(), rating);
         }
         else {
-            productIcon.setImageResource(R.drawable.ic_img_not_found);
+            rating.setImageResource(R.drawable.ic_img_not_found);
         }
-        //}
         return view;
     }
 

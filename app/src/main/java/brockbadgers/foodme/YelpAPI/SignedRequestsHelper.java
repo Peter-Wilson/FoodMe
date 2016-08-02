@@ -1,6 +1,7 @@
 package brockbadgers.foodme.YelpAPI;
 
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -11,6 +12,7 @@ import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Formatter;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.SortedMap;
@@ -32,12 +34,12 @@ public class SignedRequestsHelper {
     private static final String REQUEST_METHOD = "GET";
 
     // query the yelp site
-    private String endpoint = "api.yelp.com/v2/search"; // must be lowercase
+    private String endpoint = "http://api.yelp.com/v2/search"; // must be lowercase
 
 
     private String yelpConsumerKey = "Ep4zPJHfTkDnQu0Gb10pYg";
-    private String yelpToken = "6HFtuuurLGjVRWipDttj4h3O7NdVRzDE";
-    private String yelpTokenSecretKey = "xTeygTY1syOp8PLVKyP0zD9V3sg";
+    private String yelpToken = "ffaWzSVhirPmh9GwVN7a8yHrjGlxURQ0";
+    private String yelpTokenSecretKey = "03zRA9z9aogl7dT0CILrcwVskaw";
 
     private SecretKeySpec secretKeySpec = null;
     private Mac mac = null;
@@ -51,57 +53,58 @@ public class SignedRequestsHelper {
     }
 
     public String sign(Map<String, String> params) {
-        SecureRandom random = new SecureRandom();
         params.put("oauth_consumer_key", yelpConsumerKey);
-        params.put("oauth_signature_method", "hmac-sha1");
+        params.put("oauth_signature_method", "HMAC-SHA1");
         params.put("oauth_token", yelpToken);
-        params.put("oauth_timestamp", timestamp());
-        params.put("oauth_nonce", new BigInteger(130, random).toString(32));
 
         SortedMap<String, String> sortedParamMap =
                 new TreeMap<String, String>(params);
         String canonicalQS = canonicalize(sortedParamMap);
         String toSign =
-                REQUEST_METHOD + "\n"
-                        + endpoint + "\n"
-                        + REQUEST_URI + "\n"
+                REQUEST_METHOD + "?"
+                        + endpoint
+                        + REQUEST_URI + "?"
                         + canonicalQS;
 
         String hmac = hmac(toSign);
         String sig = percentEncodeRfc3986(hmac);
-        String url = "http://" + endpoint + REQUEST_URI + "?" +
-                canonicalQS + "&Signature=" + sig;
-
+        String url = endpoint + REQUEST_URI + "?" +
+                canonicalQS + "&oauth_signature=" + sig;
+        Log.i("encryption", "URL: "+url);
         return url;
+    }
+
+    private static String toHexString(byte[] bytes) {
+        Formatter formatter = new Formatter();
+
+        for (byte b : bytes) {
+            formatter.format("%02x", b);
+        }
+
+        return formatter.toString();
     }
 
     private String hmac(String stringToSign) {
         String signature = null;
         byte[] rawHmac;
         try {
-            Mac sha256_HMAC = Mac.getInstance(HMAC_SHA1_ALGORITHM);
-            SecretKeySpec secret_key = new SecretKeySpec(yelpTokenSecretKey.getBytes(UTF8_CHARSET), HMAC_SHA1_ALGORITHM);
-            sha256_HMAC.init(secret_key);
+            String stringToSign2 = stringToSign.replace("%","%25").replace("=","%3D").replace("&","%26").replace("?","\\u0026").replace("/","%2F").replace(":","%3A");
+            Mac sha1_HMAC = Mac.getInstance(HMAC_SHA1_ALGORITHM);
+            SecretKeySpec secret_key = new SecretKeySpec(yelpTokenSecretKey.getBytes(), HMAC_SHA1_ALGORITHM);
+            sha1_HMAC.init(secret_key);
 
-            rawHmac = sha256_HMAC.doFinal(stringToSign.getBytes(UTF8_CHARSET));
+            rawHmac = sha1_HMAC.doFinal(stringToSign2.getBytes(UTF8_CHARSET));
             signature = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(UTF8_CHARSET + " is unsupported!", e);
+            Log.i("encryption","string to sign: " + stringToSign2);
+            Log.i("encryption","signature: " + signature);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (InvalidKeyException e) {
             e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
         return signature;
-    }
-
-    private String timestamp() {
-        String timestamp = null;
-        Calendar cal = Calendar.getInstance();
-        //DateFormat dfm = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        //dfm.setTimeZone(TimeZone.getTimeZone("ET"));
-        timestamp = ""+cal.getTime().getTime();
-        return timestamp;
     }
 
     private String canonicalize(SortedMap<String, String> sortedParamMap)

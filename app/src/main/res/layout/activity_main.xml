@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.MainActivity">
+    tools:context=".Activities.MainActivity">
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -15,11 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:context="brockbadgers.foodme.activities.MapsActivity" />
+        tools:context="brockbadgers.foodme.Activities.MapsActivity" />
     <fragment
         android:id="@+id/restaurant_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:name="brockbadgers.foodme.fragments.RestaurantListFragment" />
+        android:name="brockbadgers.foodme.Fragments.RestaurantListFragment"
+        tools:layout="@layout/fragment_restaurant_list" />
 </LinearLayout>

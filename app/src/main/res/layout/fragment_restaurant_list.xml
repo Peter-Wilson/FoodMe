@@ -2,19 +2,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="brockbadgers.foodme.fragments.RestaurantListFragment">
+    tools:context="brockbadgers.foodme.Fragments.RestaurantListFragment">
 
-    <ListView
-        android:id="@+id/restaurant_listview"
+    <LinearLayout
+        android:id="@+id/results"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:dividerHeight="1dp"
-        android:divider="#44433A"
-        android:paddingBottom="5dp"
-        android:layout_height="fill_parent"
-        android:minHeight="300dp"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:padding="5dp"
+                android:text="Sort by:" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:id="@+id/name_sort"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_buttons"
+                android:text="Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:id="@+id/address_sort"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_buttons"
+                android:text="Address" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:id="@+id/rating_sort"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_buttons"
+                android:text="Rating" />
+
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/restaurant_listview"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:dividerHeight="1dp"
+            android:divider="#44433A"
+            android:paddingBottom="5dp"
+            android:layout_height="fill_parent"
+            android:minHeight="300dp"/>
+        </ScrollView>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

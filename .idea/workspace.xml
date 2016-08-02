@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="encryption" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -59,28 +60,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fragment_restaurant_list.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurant_list.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.724138">
-              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="87" selection-start-line="84" selection-start-column="87" selection-end-line="84" selection-end-column="87" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestaurantListFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/fragments/RestaurantListFragment.java">
+      <file leaf-file-name="list_item_restaurant.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_restaurant.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
-              <folding>
-                <element signature="e#818#819#0" expanded="true" />
-                <element signature="e#868#869#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-18.586206">
+              <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/adapters/RestaurantListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="40" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
+              <caret line="75" column="54" selection-start-line="75" selection-start-column="54" selection-end-line="75" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,78 +97,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list_item_product.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_product.xml">
+      <file leaf-file-name="fragment_restaurant_list.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurant_list.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5862069">
-              <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+            <state vertical-scroll-proportion="-4.1034484">
+              <caret line="7" column="32" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.4827585">
-              <caret line="23" column="74" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="74" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.4827585">
-              <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/MainActivity.java">
+      <file leaf-file-name="RestaurantListFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Fragments/RestaurantListFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="63" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4971#6418#0" expanded="true" />
-                <element signature="e#6417#6418#0" expanded="true" />
-                <element signature="e#6420#6751#0" expanded="true" />
-                <element signature="e#6750#6751#0" expanded="true" />
-              </folding>
+              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11643836">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <file leaf-file-name="rounded_buttons.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_buttons.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="76" selection-start-line="31" selection-start-column="76" selection-end-line="31" selection-end-column="76" />
+              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestaurantComparator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/javaClasses/RestaurantComparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#886#887#0" expanded="true" />
+                <element signature="e#928#929#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_restauraunt_info.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_restauraunt_info.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.54745764">
+              <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -179,9 +162,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -3043,7 +3026,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_yelp_search.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_actionbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/RestaurauntInfoActivity.java" />
@@ -3057,21 +3039,38 @@
         <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SearchObject.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SearchParamHandler.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SignedRequestsHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/UrlParameterHandler.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/adapters/RestaurantListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurant_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/fragments/RestaurantListFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/Restaurant.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/Parser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/circle_numbers.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/fragments/RestaurantListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/UrlParameterHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SignedRequestsHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/javaClasses/RestaurantComparator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_buttons.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurant_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Fragments/RestaurantListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item_restaurant.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/adapters/RestaurantListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_restauraunt_info.xml" />
       </list>
     </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
   </component>
   <component name="NamedScopeManager">
     <order />
@@ -3286,7 +3285,29 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
+              <option name="myItemId" value="javaClasses" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FoodMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="foodme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fragments" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3330,7 +3351,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="activities" />
+              <option name="myItemId" value="Activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3505,6 +3526,9 @@
       <recent name="" />
       <recent name="brockbadgers.foodme.Activities.MainActivity" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="brockbadgers.foodme" />
+    </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -3646,7 +3670,7 @@
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="brockbadgers.foodme.activities.SplashScreenActivity" />
+      <option name="ACTIVITY_CLASS" value="brockbadgers.foodme.Activities.SplashScreenActivity" />
       <method />
     </configuration>
     <list size="1">
@@ -3691,30 +3715,30 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32684284" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3259177" sideWeight="0.49573562" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.48507464" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23359288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14925373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28031147" sideWeight="0.8726013" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23134328" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28031147" sideWeight="0.12739871" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20735608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12458287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20735608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12458287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39933258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39933258" sideWeight="0.89712155" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3770,15 +3794,55 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/MainActivity.java</url>
-          <line>218</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java</url>
+          <line>152</line>
           <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java</url>
+          <line>153</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java</url>
+          <line>155</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java</url>
+          <line>154</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java</url>
+          <line>143</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SignedRequestsHelper.java</url>
+          <line>90</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SignedRequestsHelper.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="21" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="app">
+        <watch expression="response" language="JAVA" custom="" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
@@ -3800,29 +3864,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/RestaurauntInfoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_restauraunt_info.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_restauraunt_info.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/RestaurauntInfoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -3837,17 +3879,6 @@
           <folding>
             <marker date="1470078816581" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_restauraunt_info.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3888,21 +3919,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/RestaurauntInfoActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/RestaurauntInfoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.30357143">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3942,12 +3962,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/SplashScreenActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/SplashScreenActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6058282">
           <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3968,17 +3988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SignedRequestsHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2242#2258#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3995,17 +4004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/UrlParameterHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="96" selection-start-line="22" selection-start-column="96" selection-end-line="22" selection-end-column="96" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#715#731#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4014,13 +4012,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_product.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5862069">
-          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+        <state vertical-scroll-proportion="1.4350649">
+          <caret line="52" column="61" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/circle_numbers.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -4031,7 +4036,7 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.4827585">
-          <caret line="23" column="74" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="74" />
+          <caret line="23" column="15" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -4041,54 +4046,27 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.4827585">
-          <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.63474023">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurant_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/UrlParameterHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.724138">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/fragments/RestaurantListFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/SignedRequestsHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
-          <folding>
-            <element signature="e#818#819#0" expanded="true" />
-            <element signature="e#868#869#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/adapters/RestaurantListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="40" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
+          <caret line="99" column="29" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="131" column="63" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4971#6418#0" expanded="true" />
-            <element signature="e#6417#6418#0" expanded="true" />
-            <element signature="e#6420#6751#0" expanded="true" />
-            <element signature="e#6750#6751#0" expanded="true" />
+            <element signature="e#2123#2139#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -4104,13 +4082,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/YelpAPI/Parser.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/javaClasses/RestaurantComparator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11643836">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#886#887#0" expanded="true" />
+            <element signature="e#928#929#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_buttons.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurant_list.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1034484">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Fragments/RestaurantListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/Activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="87" selection-start-line="84" selection-start-column="87" selection-end-line="84" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_restaurant.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.586206">
+          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/brockbadgers/foodme/adapters/RestaurantListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="54" selection-start-line="75" selection-start-column="54" selection-end-line="75" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_restauraunt_info.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54745764">
+          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,16 +1,16 @@
-package brockbadgers.foodme.activities;
+package brockbadgers.foodme.Activities;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,17 +31,19 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
-import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import brockbadgers.foodme.YelpAPI.Restaurant;
 import brockbadgers.foodme.R;
 import brockbadgers.foodme.YelpAPI.Parser;
 import brockbadgers.foodme.YelpAPI.SignedRequestsHelper;
 import brockbadgers.foodme.YelpAPI.UrlParameterHandler;
+import brockbadgers.foodme.Fragments.RestaurantListFragment;
+import brockbadgers.foodme.javaClasses.RestaurantComparator;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, RestaurantFragment.OnListFragmentInteractionListener {
+public class MainActivity extends ActionBarActivity implements OnMapReadyCallback, RestaurantListFragment.OnFragmentInteractionListener {
 
     private GoogleMap mMap;
     private final int MY_PERMISSIONS_LOCATION = 0;
@@ -49,13 +51,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LatLng location = new LatLng(43.6458088, -79.3879955);
     private ActionBar searchBar = null;
     private ArrayList<Restaurant> restaurants;
+    private RestaurantListFragment listFragment;
+    private Context c = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        c = this;
         getWindow().setStatusBarColor(getResources().getColor(R.color.logored));
         initializeSearchBar();
 
@@ -64,8 +68,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Fragment listFragment = (Fragment) getSupportFragmentManager()
-                .findFragmentById(R.id.restaurant_list);
+        listFragment = (RestaurantListFragment) getSupportFragmentManager().findFragmentById(R.id.restaurant_list);
     }
 
     @NonNull
@@ -110,6 +113,27 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         searchBar.setDisplayShowCustomEnabled(true);
     }
 
+    public void sortRestaurants(int sortType)
+    {
+        RestaurantComparator.Order sortingBy = RestaurantComparator.Order.Name;
+
+        switch(sortType){
+            case 0:
+                sortingBy = RestaurantComparator.Order.Address;
+            break;
+            case 1:
+                sortingBy = RestaurantComparator.Order.Rating;
+                break;
+            default:
+                break;
+        }
+
+        RestaurantComparator comparator = new RestaurantComparator();
+        comparator.setSortingBy(sortingBy);
+        Collections.sort(restaurants, comparator); // now we have a sorted list
+
+    }
+
     private void SearchRestaurant(String query) {
         //do search
         try {
@@ -134,27 +158,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             if(list == null) return;
 
                             //convert the response to a list
-                            for(int i = 0; i < list.getLength(); i++)
+                            for(int i = 0; i < list.length(); i++)
                                 restaurants.add(restaurants.size(), parser.getRestaurant(list, i));
 
-                            if(restaurants.isEmpty() || (restaurants.size() == 1 && restaurants.get(0).getTitle().equals(""))) {
-                                    notFound.setVisibility(View.VISIBLE);
-                                    searchList.setVisibility(View.GONE);
-                            }
-                            else {
-                                notFound.setVisibility(View.GONE);
-                                searchList.setVisibility(View.VISIBLE);
-
-                                //Load the search list
-                                searchList.setAdapter(new ProductListAdapter(this, restaurants));
-                            }
+                            listFragment.UpdateRestaurants(restaurants);
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error)
                 {
                     error.printStackTrace();
-                    Toast.makeText(getActivity(), "Error occurred: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c, "Error occurred: "+error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -166,8 +180,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             e.printStackTrace();
         }
 
-        }
+    }
 
+    @Override
+    public void onFragmentInteraction(Uri uri)
+    {
+        //allow for interactions
     }
 
     @Override
@@ -206,11 +224,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
             }
         });
-    }
-
-    public void onListFragmentInteraction(DummyContent.DummyItem uri){
-        //TODO: Change dummy item and content to the actual restaurant content
-        //you can leave it empty
     }
 
     @Override

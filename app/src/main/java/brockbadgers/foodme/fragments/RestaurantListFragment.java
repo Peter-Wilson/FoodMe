@@ -1,4 +1,4 @@
-package brockbadgers.foodme.fragments;
+package brockbadgers.foodme.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import brockbadgers.foodme.adapters.RestaurantListAdapter;
 public class RestaurantListFragment extends Fragment {
 
     private TextView notFound;
+    private LinearLayout results;
     private ListView searchList;
 
     private OnFragmentInteractionListener mListener;
@@ -38,8 +40,10 @@ public class RestaurantListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_restaurant_list, container, false);
+
+        results = (LinearLayout) v.findViewById(R.id.results);
         searchList = (ListView) v.findViewById(R.id.restaurant_listview);
-        searchList.setVisibility(View.GONE);
+        results.setVisibility(View.GONE);
         notFound = (TextView) v.findViewById(R.id.no_items_matched);
         notFound.setVisibility(View.VISIBLE);
         return v;
@@ -69,16 +73,16 @@ public class RestaurantListFragment extends Fragment {
         mListener = null;
     }
 
-    public void updateRestaurants(ArrayList<Restaurant> restaurants)
+    public void UpdateRestaurants(ArrayList<Restaurant> restaurants)
     {
         //Load the search list
         if(restaurants.isEmpty() || (restaurants.size() == 1 && restaurants.get(0).getId().equals(""))) {
             notFound.setVisibility(View.VISIBLE);
-            searchList.setVisibility(View.GONE);
+            results.setVisibility(View.GONE);
         }
         else {
             notFound.setVisibility(View.GONE);
-            searchList.setVisibility(View.VISIBLE);
+            results.setVisibility(View.VISIBLE);
             searchList.setAdapter(new RestaurantListAdapter(getActivity(), restaurants));
         }
     }

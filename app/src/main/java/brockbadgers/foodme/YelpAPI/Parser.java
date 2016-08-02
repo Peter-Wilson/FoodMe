@@ -50,7 +50,7 @@ public class Parser {
             object.setDisplayPhone(r.get(KEY_DISPLAY_PHONE).toString());
             object.setReviewCount((int) r.get(KEY_REVIEW_COUNT));
             object.setRating((double) r.get(KEY_RATING));
-            object.setRatingImgUrl(r.get(KEY_IMAGE_URL).toString());
+            object.setRatingImgUrl(r.get(KEY_RATING_URL_IMAGE).toString());
             object.setSnippetText(r.get(KEY_SNIPPET_TEXT).toString());
             StringBuilder sb = new StringBuilder();
             JSONObject location = r.getJSONObject(KEY_ROOT_LOCATION);
