@@ -30,6 +30,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
+import org.json.JSONArray;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
@@ -128,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             if(restaurants == null)
                                 restaurants = new ArrayList<>();
                             Parser parser = new Parser();
-                            NodeList list = parser.getResponseNodeList(response);
+                            JSONArray list = parser.getResponseList(response);
 
                             if(list == null) return;
 

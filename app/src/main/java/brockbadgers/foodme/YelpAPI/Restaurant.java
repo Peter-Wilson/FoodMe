@@ -15,8 +15,8 @@ public class Restaurant {
     private String snippetText;
     private String displayAddress;
     private String reservationUrl;
-    private float longitude;
-    private float lattitude;
+    private double longitude;
+    private double lattitude;
 
     public String getId() {
         return id;
@@ -106,19 +106,19 @@ public class Restaurant {
         this.reservationUrl = reservationUrl;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public float getLattitude() {
+    public double getLattitude() {
         return lattitude;
     }
 
-    public void setLattitude(float lattitude) {
+    public void setLattitude(double lattitude) {
         this.lattitude = lattitude;
     }
 }

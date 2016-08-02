@@ -2,58 +2,36 @@ package brockbadgers.foodme.YelpAPI;
 
 import android.util.Log;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.URL;
-import java.net.URLConnection;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Parser {
     /** ---------------------  Search TAG --------------------- */
-    private static final String KEY_ROOT="Items";
-    private static final String KEY_REQUEST_ROOT="Request";
-    private static final String KEY_REQUEST_CONTAINER="IsValid";
-    private static final String KEY_ITEM="Item";
-    private static final String KEY_ID="ASIN";
-    private static final String KEY_ITEM_URL="DetailPageURL";
-    private static final String KEY_IMAGE_ROOT="MediumImage";
-    private static final String KEY_IMAGE_CONTAINER="URL";
-    private static final String KEY_ITEM_ATTR_CONTAINER="ItemAttributes";
-    private static final String KEY_ITEM_ATTR_TITLE="Title";
-    private static final String KEY_ITEM_ATTR_LIST_PRICE="ListPrice";
-    private static final String KEY_ITEM_ATTR_PRICE="Amount";
+    private static final String KEY_ROOT="businesses";
+    private static final String KEY_ID="id";
+    private static final String KEY_NAME="name";
+    private static final String KEY_IMAGE_URL="image_url";
+    private static final String KEY_URL="url";
+    private static final String KEY_DISPLAY_PHONE="display_phone";
+    private static final String KEY_REVIEW_COUNT="review_count";
+    private static final String KEY_RATING="rating";
+    private static final String KEY_RATING_URL_IMAGE="rating_img_url";
+    private static final String KEY_SNIPPET_TEXT="snippet_text";
+    private static final String KEY_ROOT_LOCATION="location";
+    private static final String KEY_DISPLAY_ADDRESS="display_address";
+    private static final String KEY_RESERVATION_URL="reservation_url";
+    private static final String KEY_ROOT_COORDINATE="coordinate";
+    private static final String KEY_LATITUDE="latitude";
+    private static final String KEY_LONGITUDE="longitude";
 
-    private static final String VALUE_VALID_RESPONSE="True";
-
-    //Tags
-    //Items,Request,IsValid,Item,ASIN,DetailPageURL,MediumImage,URL,ItemAttributes,Title
-
-
-    public NodeList getResponseNodeList(String searchResponse)
+    public JSONArray getResponseList(String searchResponse)
     {
         Log.i("response", "" + searchResponse);
-        Document doc;
-        NodeList items = null;
+        JSONArray items = null;
         if (searchResponse != null) {
             try {
-                doc = this.getDomElement(searchResponse);
-                items = doc.getElementsByTagName(KEY_ROOT);
-                Element element=(Element)items.item(0);
-                if(isResponseValid(element)){
-                    items=doc.getElementsByTagName(KEY_ITEM);
-                }
+                JSONObject json = new JSONObject(searchResponse);
+                items = json.getJSONArray(KEY_ROOT);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -61,116 +39,36 @@ public class Parser {
         return items;
     }
 
-    public Restaurant getRestaurant(NodeList list, int position){
+    public Restaurant getRestaurant(JSONArray list, int position){
         Restaurant object=new Restaurant();
-        Element e = (Element) list.item(position);
-        try {
-            object.setUrl(this.getValue(e, KEY_ITEM_URL));
-            object.setId(this.getValue(e, KEY_ID));
-        }
-        catch(Exception ex){}
-
-        try {
-            //get the title
-            if(e.getElementsByTagName(KEY_ITEM_ATTR_CONTAINER) != null)
-                object.setTitle(this.getValue((Element) (e.getElementsByTagName(KEY_ITEM_ATTR_CONTAINER).item(0))
-                        , KEY_ITEM_ATTR_TITLE));
-        }
-        catch(Exception ex){}
-
-        try {
-            //get the image url
-            if(e.getElementsByTagName(KEY_IMAGE_ROOT) != null)
-                object.setImageUrl(this.getValue((Element) (e.getElementsByTagName(KEY_IMAGE_ROOT).item(0))
-                        , KEY_IMAGE_CONTAINER));
-        }
-        catch(Exception ex){}
-
-        try {
-            //get the price
-            if(e.getElementsByTagName(KEY_ITEM_ATTR_LIST_PRICE) != null) {
-                String price = this.getValue((Element) (e.getElementsByTagName(KEY_ITEM_ATTR_LIST_PRICE).item(0))
-                        , KEY_ITEM_ATTR_PRICE);
-                if(!price.equals(""))
-                    object.setPrice(Double.parseDouble(price)/100);
+        try{
+            JSONObject r = list.getJSONObject(position);
+            object.setId(r.get(KEY_ID).toString());
+            object.setName(r.get(KEY_NAME).toString());
+            object.setImageUrl(r.get(KEY_IMAGE_URL).toString());
+            object.setUrl(r.get(KEY_URL).toString());
+            object.setDisplayPhone(r.get(KEY_DISPLAY_PHONE).toString());
+            object.setReviewCount((int) r.get(KEY_REVIEW_COUNT));
+            object.setRating((double) r.get(KEY_RATING));
+            object.setRatingImgUrl(r.get(KEY_IMAGE_URL).toString());
+            object.setSnippetText(r.get(KEY_SNIPPET_TEXT).toString());
+            StringBuilder sb = new StringBuilder();
+            JSONObject location = r.getJSONObject(KEY_ROOT_LOCATION);
+            JSONArray address = location.getJSONArray(KEY_DISPLAY_ADDRESS);
+            for (int i = 0; i < address.length(); i++) {
+                sb.append(address.getJSONObject(i));
             }
+            object.setDisplayAddress(sb.toString());
+            object.setReservationUrl(r.get(KEY_RESERVATION_URL).toString());
+            JSONObject coordinate = location.getJSONObject(KEY_ROOT_COORDINATE);
+            object.setLongitude((double)coordinate.get(KEY_LONGITUDE));
+            object.setLongitude((double)coordinate.get(KEY_LATITUDE));
+
         }
-        catch(Exception ex){}
+        catch(Exception e)
+        {
+            Log.i("stacktrace", e.getStackTrace().toString());
+        }
         return object;
-    }
-
-    public boolean isResponseValid(Element element){
-        NodeList nList=element.getElementsByTagName(KEY_REQUEST_ROOT);
-        Element e=(Element)nList.item(0);
-        if(getValue(e, KEY_REQUEST_CONTAINER).equals(VALUE_VALID_RESPONSE)){
-            return true;
-        }
-        return false;
-    }
-
-    /** In app reused functions */
-
-    private String getUrlContents(String theUrl) {
-        StringBuilder content = new StringBuilder();
-        try {
-            URL url = new URL(theUrl);
-            URLConnection urlConnection = url.openConnection();
-            BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(urlConnection.getInputStream()), 8);
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                content.append(line + "");
-            }
-            bufferedReader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return content.toString();
-    }
-
-    public Document getDomElement(String xml) {
-        Document doc = null;
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
-
-            DocumentBuilder db = dbf.newDocumentBuilder();
-
-            InputSource is = new InputSource();
-            is.setCharacterStream(new StringReader(xml));
-            doc = (Document) db.parse(is);
-
-        } catch (ParserConfigurationException e) {
-            Log.e("Error: ", e.getMessage());
-            return null;
-        } catch (SAXException e) {
-            Log.e("Error: ", e.getMessage());
-            return null;
-        } catch (IOException e) {
-            Log.e("Error: ", e.getMessage());
-            return null;
-        }
-
-        return doc;
-    }
-
-    public final String getElementValue(Node elem) {
-        Node child;
-        if (elem != null) {
-            if (elem.hasChildNodes()) {
-                for (child = elem.getFirstChild(); child != null; child = child
-                        .getNextSibling()) {
-                    if (child.getNodeType() == Node.TEXT_NODE
-                            || (child.getNodeType() == Node.CDATA_SECTION_NODE)) {
-                        return child.getNodeValue();
-                    }
-                }
-            }
-        }
-        return "";
-    }
-
-    public String getValue(Element item, String str) {
-        NodeList n = item.getElementsByTagName(str);
-        return this.getElementValue(n.item(0));
     }
 }
