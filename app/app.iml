@@ -184,5 +184,6 @@
     <orderEntry type="library" exported="" name="firebase-analytics-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-tagmanager-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-safetynet-9.0.1" level="project" />
+    <orderEntry type="module" module-name="volley" exported="" />
   </component>
 </module>

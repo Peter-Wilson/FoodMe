@@ -21,6 +21,12 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,9 +34,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 import brockbadgers.foodme.Fragments.RestaurantFragment;
 import brockbadgers.foodme.Fragments.dummy.DummyContent;
 import brockbadgers.foodme.R;
+import brockbadgers.foodme.YelpAPI.Parser;
+import brockbadgers.foodme.YelpAPI.SignedRequestsHelper;
+import brockbadgers.foodme.YelpAPI.UrlParameterHandler;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, RestaurantFragment.OnListFragmentInteractionListener {
 
@@ -86,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 //Hide the keyboard
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
+                SearchRestaurant(query);
                 return true;
 
             }
@@ -94,6 +106,75 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         searchBar.setCustomView(searchView);
         searchBar.setDisplayShowCustomEnabled(true);
+    }
+
+    private void SearchRestaurant(String query) {
+        //do search
+        try {
+            UrlParameterHandler handler = UrlParameterHandler.getInstance();
+            SignedRequestsHelper helper = new SignedRequestsHelper();
+
+            // Instantiate the RequestQueue.
+            RequestQueue queue = Volley.newRequestQueue(this);
+            String url = helper.sign(handler.buildMapForItemSearch(query.toString(), location.longitude, location.latitude));
+
+            // Request a string response from the provided URL.
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            //initialize the list and parser
+                            if(Page == 1 || products == null)
+                                products = new ArrayList<>();
+                            Parser parser = new Parser();
+                            NodeList list = parser.getResponseNodeList(response);
+
+                            if(list == null) return;
+
+                            //convert the response to a list
+                            for(int i = 0; i < list.getLength(); i++)
+                                products.add(products.size(), parser.getSearchObject(list, i));
+
+                            if(products.isEmpty() || (products.size() == 1 && products.get(0).getTitle().equals("") || Page == 5)) {
+                                if(Page == 1) {
+                                    notFound.setVisibility(View.VISIBLE);
+                                    searchList.setVisibility(View.GONE);
+                                    loadMore.setVisibility(View.GONE);
+                                    llSearch.setBackground(getActivity().getResources().getDrawable(R.drawable.border_bottom));
+                                }
+                                else {
+                                    loadMore.setVisibility(View.GONE);
+                                }
+                            }
+                            else {
+                                notFound.setVisibility(View.GONE);
+                                searchList.setVisibility(View.VISIBLE);
+                                loadMore.setVisibility(View.VISIBLE);
+                                llSearch.setBackground(getActivity().getResources().getDrawable(R.drawable.border_bottom));
+
+                                //Load the search list
+                                searchList.setAdapter(new ProductListAdapter(getActivity(), products));
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error)
+                {
+                    error.printStackTrace();
+                    Toast.makeText(getActivity(), "Error occurred: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            // Add the request to the RequestQueue.
+            queue.add(stringRequest);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        }
+
     }
 
     @Override
