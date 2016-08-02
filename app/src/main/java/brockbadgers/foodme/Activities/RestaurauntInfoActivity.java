@@ -1,4 +1,4 @@
-package brockbadgers.foodme.Activities;
+package brockbadgers.foodme.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

@@ -1,23 +1,20 @@
-package brockbadgers.foodme.Activities;
+package brockbadgers.foodme.activities;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -32,12 +29,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
-import brockbadgers.foodme.Fragments.RestaurantFragment;
-import brockbadgers.foodme.Fragments.dummy.DummyContent;
+import brockbadgers.foodme.YelpAPI.Restaurant;
 import brockbadgers.foodme.R;
 import brockbadgers.foodme.YelpAPI.Parser;
 import brockbadgers.foodme.YelpAPI.SignedRequestsHelper;
@@ -50,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     //default location to 155 wellington if location permissions are not granted
     private LatLng location = new LatLng(43.6458088, -79.3879955);
     private ActionBar searchBar = null;
+    private ArrayList<Restaurant> restaurants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Fragment listFragment = (Fragment) getSupportFragmentManager()
+                .findFragmentById(R.id.restaurant_list);
     }
 
     @NonNull
@@ -124,8 +125,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         @Override
                         public void onResponse(String response) {
                             //initialize the list and parser
-                            if(Page == 1 || products == null)
-                                products = new ArrayList<>();
+                            if(restaurants == null)
+                                restaurants = new ArrayList<>();
                             Parser parser = new Parser();
                             NodeList list = parser.getResponseNodeList(response);
 
@@ -133,27 +134,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                             //convert the response to a list
                             for(int i = 0; i < list.getLength(); i++)
-                                products.add(products.size(), parser.getSearchObject(list, i));
+                                restaurants.add(restaurants.size(), parser.getRestaurant(list, i));
 
-                            if(products.isEmpty() || (products.size() == 1 && products.get(0).getTitle().equals("") || Page == 5)) {
-                                if(Page == 1) {
+                            if(restaurants.isEmpty() || (restaurants.size() == 1 && restaurants.get(0).getTitle().equals(""))) {
                                     notFound.setVisibility(View.VISIBLE);
                                     searchList.setVisibility(View.GONE);
-                                    loadMore.setVisibility(View.GONE);
-                                    llSearch.setBackground(getActivity().getResources().getDrawable(R.drawable.border_bottom));
-                                }
-                                else {
-                                    loadMore.setVisibility(View.GONE);
-                                }
                             }
                             else {
                                 notFound.setVisibility(View.GONE);
                                 searchList.setVisibility(View.VISIBLE);
-                                loadMore.setVisibility(View.VISIBLE);
-                                llSearch.setBackground(getActivity().getResources().getDrawable(R.drawable.border_bottom));
 
                                 //Load the search list
-                                searchList.setAdapter(new ProductListAdapter(getActivity(), products));
+                                searchList.setAdapter(new ProductListAdapter(this, restaurants));
                             }
                         }
                     }, new Response.ErrorListener() {

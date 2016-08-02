@@ -61,7 +61,7 @@ public class Parser {
         return items;
     }
 
-    public Restaurant getSearchObject(NodeList list,int position){
+    public Restaurant getRestaurant(NodeList list, int position){
         Restaurant object=new Restaurant();
         Element e = (Element) list.item(position);
         try {

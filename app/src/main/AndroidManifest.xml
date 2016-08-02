@@ -15,11 +15,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.ActionBar" />
         <activity
-            android:name=".Activities.SplashScreenActivity"
+            android:name=".activities.SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
@@ -30,13 +30,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.RestaurauntInfoActivity"
+            android:name=".activities.RestaurauntInfoActivity"
             android:label="@string/title_activity_restauraunt_info"
-            android:parentActivityName=".Activities.MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="brockbadgers.foodme.Activities.MainActivity" />
+                android:value="brockbadgers.foodme.activities.MainActivity" />
         </activity>
     </application>
 
