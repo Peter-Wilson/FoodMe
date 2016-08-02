@@ -10,8 +10,12 @@ import java.util.Comparator;
  */
 public class RestaurantComparator implements Comparator<Business> {
     public enum Order {Name, Address, Rating}
+    public Order sortingBy;
 
-    private Order sortingBy = Order.Name;
+    public RestaurantComparator(Order type)
+    {
+        sortingBy = type;
+    }
 
     @Override
     public int compare(Business restaurant1, Business restaurant2) {

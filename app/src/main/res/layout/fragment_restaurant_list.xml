@@ -7,7 +7,6 @@
     <LinearLayout
         android:id="@+id/results"
         android:orientation="vertical"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -57,9 +56,6 @@
                 android:text="Rating" />
 
         </LinearLayout>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
         <ListView
             android:id="@+id/restaurant_listview"
             android:layout_width="match_parent"
@@ -68,16 +64,15 @@
             android:dividerHeight="1dp"
             android:divider="#44433A"
             android:paddingBottom="5dp"
-            android:layout_height="fill_parent"
+            android:overScrollMode="ifContentScrolls"
+            android:layout_height="match_parent"
             android:minHeight="300dp"/>
-        </ScrollView>
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/no_items_matched"
-        android:visibility="gone"
         android:layout_gravity="center_horizontal"
         android:padding="20dp"
         android:text="No Items Matched">

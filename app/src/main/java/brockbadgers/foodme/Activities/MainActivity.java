@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -132,19 +133,21 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         RestaurantComparator.Order sortingBy = RestaurantComparator.Order.Name;
 
         switch(sortType){
-            case 0:
+            case 0: {
                 sortingBy = RestaurantComparator.Order.Address;
-            break;
-            case 1:
+                break;
+            }
+            case 1: {
                 sortingBy = RestaurantComparator.Order.Rating;
                 break;
+            }
             default:
                 break;
         }
 
-        RestaurantComparator comparator = new RestaurantComparator();
-        comparator.setSortingBy(sortingBy);
+        RestaurantComparator comparator = new RestaurantComparator(sortingBy);
         Collections.sort(businesses, comparator); // now we have a sorted list
+        listFragment.UpdateRestaurants(businesses);
 
     }
 
@@ -173,6 +176,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                 @Override
                 public void onResponse(Call<SearchResponse> call, retrofit2.Response<SearchResponse> response) {
                     SearchResponse searchResponse = response.body();
+                    Log.i("network errors", response.body().toString());
                     businesses = searchResponse.businesses();
                     listFragment.UpdateRestaurants(businesses);
                 }
@@ -180,6 +184,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                 @Override
                 public void onFailure(Call<SearchResponse> call, Throwable t) {
                     // HTTP error happened, do something to handle it.
+                    Log.i("network errors", t.getStackTrace().toString());
                 }
             };
 
@@ -187,7 +192,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
 
         }
         catch(Exception e){
-            e.printStackTrace();
+            Log.i("network errors", e.getStackTrace().toString());
         }
 
     }

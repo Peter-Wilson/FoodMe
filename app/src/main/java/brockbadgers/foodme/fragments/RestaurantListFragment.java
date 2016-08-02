@@ -15,6 +15,7 @@ import com.yelp.clientlib.entities.Business;
 
 import java.util.ArrayList;
 
+import brockbadgers.foodme.Activities.MainActivity;
 import brockbadgers.foodme.R;
 import brockbadgers.foodme.adapters.RestaurantListAdapter;
 
@@ -24,6 +25,9 @@ public class RestaurantListFragment extends Fragment {
     private TextView notFound;
     private LinearLayout results;
     private ListView searchList;
+    private TextView nameSort;
+    private TextView addressSort;
+    private TextView ratingSort;
 
     private OnFragmentInteractionListener mListener;
 
@@ -47,6 +51,30 @@ public class RestaurantListFragment extends Fragment {
         results.setVisibility(View.GONE);
         notFound = (TextView) v.findViewById(R.id.no_items_matched);
         notFound.setVisibility(View.VISIBLE);
+
+        nameSort = (TextView) v.findViewById(R.id.name_sort);
+        nameSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).sortRestaurants(2);
+            }
+        });
+
+        addressSort = (TextView) v.findViewById(R.id.address_sort);
+        addressSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).sortRestaurants(0);
+            }
+        });
+
+        ratingSort = (TextView) v.findViewById(R.id.rating_sort);
+        ratingSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).sortRestaurants(1);
+            }
+        });
         return v;
     }
 
@@ -73,7 +101,7 @@ public class RestaurantListFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
+    //TODO: add onclick for the sort buttons
     public void UpdateRestaurants(ArrayList<Business> restaurants)
     {
         //Load the search list

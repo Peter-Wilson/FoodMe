@@ -69,7 +69,7 @@ public class RestaurantListAdapter extends ArrayAdapter<Business> implements Vie
         ImageView rating = (ImageView)view.findViewById(R.id.restaurant_rating);
 
         // Populate item's widgets
-        number.setText(position);
+        number.setText(""+(position+1));
         name.setText(restaurant.name());
         StringBuilder sb = new StringBuilder();
         for(String s : restaurant.location().address())
