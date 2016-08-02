@@ -1,12 +1,17 @@
 package brockbadgers.foodme.Activities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.google.android.gms.maps.SupportMapFragment;
 
 import brockbadgers.foodme.R;
 
