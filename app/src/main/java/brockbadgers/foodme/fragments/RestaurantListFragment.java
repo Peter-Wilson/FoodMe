@@ -11,10 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.yelp.clientlib.entities.Business;
+
 import java.util.ArrayList;
 
 import brockbadgers.foodme.R;
-import brockbadgers.foodme.YelpAPI.Restaurant;
 import brockbadgers.foodme.adapters.RestaurantListAdapter;
 
 
@@ -73,10 +74,10 @@ public class RestaurantListFragment extends Fragment {
         mListener = null;
     }
 
-    public void UpdateRestaurants(ArrayList<Restaurant> restaurants)
+    public void UpdateRestaurants(ArrayList<Business> restaurants)
     {
         //Load the search list
-        if(restaurants.isEmpty() || (restaurants.size() == 1 && restaurants.get(0).getId().equals(""))) {
+        if(restaurants.isEmpty() || (restaurants.size() == 1 && restaurants.get(0).id().equals(""))) {
             notFound.setVisibility(View.VISIBLE);
             results.setVisibility(View.GONE);
         }

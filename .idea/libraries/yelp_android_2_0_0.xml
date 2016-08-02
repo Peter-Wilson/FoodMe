@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="yelp-android-2.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yelp.clientlib/yelp-android/2.0.0/891f25cda5cc11278999b1e59259565dbc1e0a11/yelp-android-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yelp.clientlib/yelp-android/2.0.0/5d3f3ac4773ee8af1759eee721d1bc719d9805e3/yelp-android-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

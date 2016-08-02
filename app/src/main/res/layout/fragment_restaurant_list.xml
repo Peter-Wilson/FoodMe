@@ -7,24 +7,26 @@
     <LinearLayout
         android:id="@+id/results"
         android:orientation="vertical"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_gravity="center"
             android:padding="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:padding="5dp"
                 android:text="Sort by:" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:id="@+id/name_sort"
                 android:padding="5dp"
                 android:layout_marginLeft="5dp"
@@ -35,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:id="@+id/address_sort"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
@@ -46,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:id="@+id/rating_sort"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
@@ -61,7 +63,6 @@
         <ListView
             android:id="@+id/restaurant_listview"
             android:layout_width="match_parent"
-            android:visibility="gone"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:dividerHeight="1dp"

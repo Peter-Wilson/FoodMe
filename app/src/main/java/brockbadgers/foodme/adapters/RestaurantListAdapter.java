@@ -10,24 +10,22 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.yelp.clientlib.entities.Business;
 
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
 
 import brockbadgers.foodme.R;
-import brockbadgers.foodme.YelpAPI.Restaurant;
 
 /**
  * Created by Peter on 8/2/2016.
  */
-public class RestaurantListAdapter extends ArrayAdapter<Restaurant> implements View.OnClickListener {
+public class RestaurantListAdapter extends ArrayAdapter<Business> implements View.OnClickListener {
 
     private Context mContext;
-    private List<Restaurant> mList;
+    private List<Business> mList;
     ImageLoader imageLoader;
 
-    public RestaurantListAdapter(Context context, List<Restaurant> list) {
+    public RestaurantListAdapter(Context context, List<Business> list) {
         super(context, R.layout.list_item_restaurant, list);
         mContext = context;
         imageLoader = ImageLoader.getInstance();
@@ -43,7 +41,7 @@ public class RestaurantListAdapter extends ArrayAdapter<Restaurant> implements V
     }
 
     @Override
-    public Restaurant getItem(int pos) {
+    public Business getItem(int pos) {
         return mList.get(pos);
     }
 
@@ -61,7 +59,7 @@ public class RestaurantListAdapter extends ArrayAdapter<Restaurant> implements V
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         //if (view == null) {
-        Restaurant restaurant = getItem(position);
+        Business restaurant = getItem(position);
         LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = li.inflate(R.layout.list_item_restaurant, parent, false);
 
@@ -72,12 +70,17 @@ public class RestaurantListAdapter extends ArrayAdapter<Restaurant> implements V
 
         // Populate item's widgets
         number.setText(position);
-        name.setText(restaurant.getName());
-        address.setText(restaurant.getDisplayAddress());
+        name.setText(restaurant.name());
+        StringBuilder sb = new StringBuilder();
+        for(String s : restaurant.location().address())
+        {
+            sb.append(s);
+        }
+        address.setText(sb.toString());
 
         // Display returned image or a default
-        if(restaurant.getRatingImgUrl() != "") {
-            imageLoader.displayImage(restaurant.getRatingImgUrl(), rating);
+        if(restaurant.ratingImgUrlSmall() != "") {
+            imageLoader.displayImage(restaurant.ratingImgUrlSmall(), rating);
         }
         else {
             rating.setImageResource(R.drawable.ic_img_not_found);
