@@ -31,8 +31,6 @@ import com.yelp.clientlib.entities.Business;
 import com.yelp.clientlib.entities.SearchResponse;
 import com.yelp.clientlib.entities.options.CoordinateOptions;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -61,18 +59,12 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //load the list from the session
         listFragment = (RestaurantListFragment) getSupportFragmentManager().findFragmentById(R.id.restaurant_list);
-
-        // Check whether we're recreating a previously destroyed instance
-        if (savedInstanceState != null && savedInstanceState.getSerializable(STATE_BUSINESS) != null) {
-            // Restore value of members from saved state
-            businesses = (ArrayList<Business>)savedInstanceState.getSerializable(STATE_BUSINESS);
-            listFragment.UpdateRestaurants(businesses);
-        } else {
-            businesses = null;
-        }
-
+        loadSession(savedInstanceState);
         c = this;
+
+        //style the search var
         getWindow().setStatusBarColor(getResources().getColor(R.color.logored));
         initializeSearchBar();
 
@@ -82,12 +74,20 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
+    private void loadSession(Bundle savedInstanceState) {
+        // Check whether we're recreating a previously destroyed instance
+        if (savedInstanceState != null && savedInstanceState.getSerializable(STATE_BUSINESS) != null) {
+            // Restore value of members from saved state
+            businesses = (ArrayList<Business>)savedInstanceState.getSerializable(STATE_BUSINESS);
+            listFragment.UpdateRestaurants(businesses);
+        } else {
+            businesses = null;
+        }
+    }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Save the user's current state
         savedInstanceState.putSerializable(STATE_BUSINESS, businesses);
-
-        // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -130,28 +130,12 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         searchBar.setDisplayShowCustomEnabled(true);
     }
 
-    public void sortRestaurants(int sortType)
+    public void sortRestaurants(RestaurantComparator.Order sortType)
     {
-        RestaurantComparator.Order sortingBy = RestaurantComparator.Order.Name;
-
-        switch(sortType){
-            case 0: {
-                sortingBy = RestaurantComparator.Order.Address;
-                break;
-            }
-            case 1: {
-                sortingBy = RestaurantComparator.Order.Rating;
-                break;
-            }
-            default:
-                break;
-        }
-
-        RestaurantComparator comparator = new RestaurantComparator(sortingBy);
+        RestaurantComparator comparator = new RestaurantComparator(sortType);
         Collections.sort(businesses, comparator); // now we have a sorted list
         AddMarkers(businesses);
         listFragment.UpdateRestaurants(businesses);
-
     }
 
     private void SearchRestaurant(String query) {

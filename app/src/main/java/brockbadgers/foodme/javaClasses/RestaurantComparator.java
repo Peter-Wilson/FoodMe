@@ -26,8 +26,4 @@ public class RestaurantComparator implements Comparator<Business> {
         }
         throw new RuntimeException("Practically unreachable code, can't be thrown");
     }
-
-    public void setSortingBy(Order sortBy) {
-        this.sortingBy = sortingBy;
-    }
 }

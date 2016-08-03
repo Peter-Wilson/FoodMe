@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import brockbadgers.foodme.Activities.MainActivity;
 import brockbadgers.foodme.R;
 import brockbadgers.foodme.adapters.RestaurantListAdapter;
+import brockbadgers.foodme.javaClasses.RestaurantComparator;
 
 
 public class RestaurantListFragment extends Fragment {
@@ -65,7 +66,7 @@ public class RestaurantListFragment extends Fragment {
         nameSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).sortRestaurants(2);
+                ((MainActivity)getActivity()).sortRestaurants(RestaurantComparator.Order.Name);
             }
         });
 
@@ -73,7 +74,7 @@ public class RestaurantListFragment extends Fragment {
         addressSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).sortRestaurants(0);
+                ((MainActivity)getActivity()).sortRestaurants(RestaurantComparator.Order.Address);
             }
         });
 
@@ -81,7 +82,7 @@ public class RestaurantListFragment extends Fragment {
         ratingSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).sortRestaurants(1);
+                ((MainActivity)getActivity()).sortRestaurants(RestaurantComparator.Order.Rating);
             }
         });
         return v;
