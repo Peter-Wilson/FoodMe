@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="brockbadgers.foodme.Activities.RestaurauntInfoActivity">
+    tools:context=".Activities.RestaurantInfoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -19,5 +19,81 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </android.support.design.widget.AppBarLayout>
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_width="match_parent">
+            <ImageView android:layout_weight="0.8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/restaurant_image"
+                />
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:background="#000000" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" android:text="Address:"
+                    android:layout_gravity="center" />
+                <TextView android:layout_height="match_parent"
+                    android:layout_width="wrap_content" android:id="@+id/address"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:background="#000000" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" android:text="Description:"
+                    android:layout_gravity="center" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" android:id="@+id/description"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:background="#000000" />
+                <ImageView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/ratings_image" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" android:text="Reviews:"
+                    android:layout_gravity="center" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" android:id="@+id/review"
+                    android:layout_gravity="center" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:background="#000000" />
+            </LinearLayout>
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map_restaurant"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                tools:context="brockbadgers.foodme.Activities.MapsActivity" />
+        </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

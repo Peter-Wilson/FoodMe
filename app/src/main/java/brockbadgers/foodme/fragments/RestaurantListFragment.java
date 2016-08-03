@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class RestaurantListFragment extends Fragment {
     private TextView nameSort;
     private TextView addressSort;
     private TextView ratingSort;
+    private ArrayList<Business> businesses;
 
     private OnFragmentInteractionListener mListener;
 
@@ -48,6 +50,13 @@ public class RestaurantListFragment extends Fragment {
 
         results = (LinearLayout) v.findViewById(R.id.results);
         searchList = (ListView) v.findViewById(R.id.restaurant_listview);
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                ((MainActivity)getActivity()).ViewRestaurant(businesses.get(position));
+            }
+        });
         results.setVisibility(View.GONE);
         notFound = (TextView) v.findViewById(R.id.no_items_matched);
         notFound.setVisibility(View.VISIBLE);
@@ -112,6 +121,7 @@ public class RestaurantListFragment extends Fragment {
         else {
             notFound.setVisibility(View.GONE);
             results.setVisibility(View.VISIBLE);
+            businesses = restaurants;
             searchList.setAdapter(new RestaurantListAdapter(getActivity(), restaurants));
         }
     }

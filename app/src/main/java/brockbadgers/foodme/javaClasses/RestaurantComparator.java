@@ -22,7 +22,7 @@ public class RestaurantComparator implements Comparator<Business> {
         switch(sortingBy) {
             case Name: return restaurant1.name().compareTo(restaurant2.name());
             case Address: return restaurant1.location().address().get(0).compareTo(restaurant2.location().address().get(0));
-            case Rating: return ((Double)restaurant1.rating()).compareTo((Double)restaurant2.rating());
+            case Rating: return ((Double)restaurant2.rating()).compareTo((Double)restaurant1.rating());
         }
         throw new RuntimeException("Practically unreachable code, can't be thrown");
     }

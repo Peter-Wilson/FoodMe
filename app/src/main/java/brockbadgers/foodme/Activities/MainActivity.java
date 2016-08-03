@@ -2,6 +2,7 @@ package brockbadgers.foodme.Activities;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
@@ -23,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.yelp.clientlib.connection.YelpAPI;
 import com.yelp.clientlib.connection.YelpAPIFactory;
 import com.yelp.clientlib.entities.Business;
@@ -61,10 +63,13 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        listFragment = (RestaurantListFragment) getSupportFragmentManager().findFragmentById(R.id.restaurant_list);
+
         // Check whether we're recreating a previously destroyed instance
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null && savedInstanceState.getSerializable(STATE_BUSINESS) != null) {
             // Restore value of members from saved state
             businesses = (ArrayList<Business>)savedInstanceState.getSerializable(STATE_BUSINESS);
+            listFragment.UpdateRestaurants(businesses);
         } else {
             businesses = null;
         }
@@ -77,8 +82,6 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        listFragment = (RestaurantListFragment) getSupportFragmentManager().findFragmentById(R.id.restaurant_list);
     }
 
     @Override
@@ -147,6 +150,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
 
         RestaurantComparator comparator = new RestaurantComparator(sortingBy);
         Collections.sort(businesses, comparator); // now we have a sorted list
+        AddMarkers(businesses);
         listFragment.UpdateRestaurants(businesses);
 
     }
@@ -179,6 +183,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                     Log.i("network errors", response.body().toString());
                     businesses = searchResponse.businesses();
                     listFragment.UpdateRestaurants(businesses);
+                    AddMarkers(businesses);
                 }
 
                 @Override
@@ -195,6 +200,27 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
             Log.i("network errors", e.getStackTrace().toString());
         }
 
+    }
+
+    public void AddMarkers(ArrayList<Business> businesses)
+    {
+        mMap.clear();
+        for(int i = 0; i < businesses.size(); i++)
+        {
+            MarkerOptions m = new MarkerOptions().position(new LatLng(businesses.get(i).location().coordinate().latitude(),
+                    businesses.get(i).location().coordinate().longitude()))
+                    .title(""+(i+1));
+            mMap.addMarker(m);
+        }
+    }
+
+    public void ViewRestaurant(Business business)
+    {
+        Intent intent = new Intent(this, RestaurantInfoActivity.class);
+        Bundle b = new Bundle();
+        b.putSerializable("Business", business);
+        intent.putExtra("new", b);
+        startActivity(intent);
     }
 
     @Override
@@ -226,6 +252,8 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         }
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
+        if(businesses != null)
+            AddMarkers(businesses);
     }
 
     private void initializeLocation() {

@@ -70,12 +70,15 @@
     </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/no_items_matched"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="50dp"
         android:padding="20dp"
-        android:text="No Items Matched">
+        android:textColor="#BDBDBD"
+        android:text="Search for a Restaurant">
 
     </TextView>
 
