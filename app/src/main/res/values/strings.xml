@@ -2,11 +2,13 @@
     <string name="app_name">FoodMe</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_restauraunt_info">RestaurauntInfoActivity</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="yelp_url">api.yelp.com/v2/search</string>
+    <string name="consumerKey">Ep4zPJHfTkDnQu0Gb10pYg</string>
+    <string name="consumerSecret">TPPingg6xezugJNdwLywuXH4gXI</string>
+    <string name="token">ffaWzSVhirPmh9GwVN7a8yHrjGlxURQ0</string>
+    <string name="tokenSecret">03zRA9z9aogl7dT0CILrcwVskaw</string>
+
 </resources>

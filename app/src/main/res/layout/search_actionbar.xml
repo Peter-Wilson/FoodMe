@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/white">
+    <android.support.v7.widget.SearchView
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:queryHint="Search"
+        android:iconifiedByDefault="false"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:searchHintIcon="@string/app_name">
+    </android.support.v7.widget.SearchView>
+</LinearLayout>
