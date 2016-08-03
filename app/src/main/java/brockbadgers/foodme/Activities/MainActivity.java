@@ -46,7 +46,6 @@ import retrofit2.Callback;
 
 public class MainActivity extends ActionBarActivity implements OnMapReadyCallback, RestaurantListFragment.OnFragmentInteractionListener {
 
-    //TODO: add powered by yelp
     private GoogleMap mMap;
     private final int MY_PERMISSIONS_LOCATION = 0;
     //default location to 155 wellington if location permissions are not granted
@@ -59,7 +58,6 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //TODO: store the restaurants for screen flips
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -106,6 +104,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
 
         final SearchView search = (SearchView) searchView.findViewById(R.id.searchBar);
 
+        //TODO:add a loading screen when searching
         //implement the search functionality in the action bar
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

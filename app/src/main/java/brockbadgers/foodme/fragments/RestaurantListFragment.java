@@ -86,14 +86,6 @@ public class RestaurantListFragment extends Fragment {
         });
         return v;
     }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -115,6 +107,7 @@ public class RestaurantListFragment extends Fragment {
     {
         //Load the search list
         if(restaurants.isEmpty() || (restaurants.size() == 1 && restaurants.get(0).id().equals(""))) {
+            notFound.setText("No Results Found");
             notFound.setVisibility(View.VISIBLE);
             results.setVisibility(View.GONE);
         }

@@ -97,6 +97,17 @@ public class RestaurantInfoActivity extends AppCompatActivity implements OnMapRe
             rating.setImageResource(R.drawable.ic_img_not_found);
         }
 
+        //TODO: get a higher quality image source
+        //setRestaurantImage
+        ImageView restImage = (ImageView)this.findViewById(R.id.restaurant_image);
+        if(business.imageUrl() != "") {
+            imageLoader.displayImage(business.imageUrl(), restImage);
+        }
+        else {
+            restImage.setImageResource(R.drawable.ic_img_not_found);
+        }
+
+        //TODO: find out what why I am not loading any reviews
         //setReview
         //TextView review = (TextView)this.findViewById(R.id.review);
         //description.setText(business.reviews().get(0).excerpt());
