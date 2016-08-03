@@ -49,6 +49,7 @@
     <LinearLayout
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:overScrollMode="ifContentScrolls"
         android:layout_weight="1"
         android:layout_width="match_parent">
         <LinearLayout
@@ -69,6 +70,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:overScrollMode="ifContentScrolls"
             android:padding="5dp"
             android:layout_width="match_parent">
             <View
@@ -89,6 +91,7 @@
         android:orientation="vertical"
         android:layout_weight="1"
             android:padding="5dp"
+            android:overScrollMode="ifContentScrolls"
         android:layout_width="match_parent">
             <View
                 android:layout_width="fill_parent"
