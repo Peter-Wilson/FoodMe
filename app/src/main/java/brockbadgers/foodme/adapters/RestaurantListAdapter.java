@@ -79,8 +79,8 @@ public class RestaurantListAdapter extends ArrayAdapter<Business> implements Vie
         address.setText(sb.toString());
 
         // Display returned image or a default
-        if(restaurant.ratingImgUrlSmall() != "") {
-            imageLoader.displayImage(restaurant.ratingImgUrlSmall(), rating);
+        if(restaurant.ratingImgUrl() != "") {
+            imageLoader.displayImage(restaurant.ratingImgUrl(), rating);
         }
         else {
             rating.setImageResource(R.drawable.ic_img_not_found);

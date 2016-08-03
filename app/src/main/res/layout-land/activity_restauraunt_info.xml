@@ -31,6 +31,7 @@
         android:layout_weight="1"
         android:layout_width="match_parent">
         <ImageView android:layout_weight="1"
+            android:background="#757575"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/restaurant_image"
@@ -53,6 +54,7 @@
         <LinearLayout
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:padding="5dp"
             android:layout_weight="1"
             android:layout_width="match_parent">
                 <TextView android:layout_height="wrap_content"
@@ -60,36 +62,38 @@
                     android:layout_gravity="center" />
                 <TextView android:layout_height="match_parent"
                     android:layout_width="wrap_content" android:id="@+id/address"
+                    android:overScrollMode="ifContentScrolls"
                     android:layout_gravity="center" />
         </LinearLayout>
         <LinearLayout
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:padding="5dp"
             android:layout_width="match_parent">
             <View
             android:layout_width="fill_parent"
             android:layout_height="0.5dip"
+                android:paddingBottom="5dp"
             android:background="#000000" />
             <TextView android:layout_height="wrap_content"
                 android:layout_width="wrap_content" android:text="Description:"
                 android:layout_gravity="center" />
             <TextView android:layout_height="match_parent"
                 android:layout_width="wrap_content" android:id="@+id/description"
+                android:overScrollMode="ifContentScrolls"
                 android:layout_gravity="center" />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="0.5dip"
-                android:background="#000000" />
         </LinearLayout>
         <LinearLayout
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="1"
+            android:padding="5dp"
         android:layout_width="match_parent">
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="0.5dip"
+                android:paddingBottom="5dp"
                 android:background="#000000" />
             <ImageView android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -100,6 +104,7 @@
             android:layout_gravity="center" />
         <TextView android:layout_height="wrap_content"
             android:layout_width="wrap_content" android:id="@+id/review"
+            android:overScrollMode="ifContentScrolls"
             android:layout_gravity="center" />
     </LinearLayout>
 

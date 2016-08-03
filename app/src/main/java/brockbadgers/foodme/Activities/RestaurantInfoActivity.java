@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,11 +23,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.yelp.clientlib.connection.YelpAPI;
+import com.yelp.clientlib.connection.YelpAPIFactory;
 import com.yelp.clientlib.entities.Business;
+import com.yelp.clientlib.entities.SearchResponse;
+import com.yelp.clientlib.entities.options.CoordinateOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import brockbadgers.foodme.R;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class RestaurantInfoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -34,6 +43,7 @@ public class RestaurantInfoActivity extends AppCompatActivity implements OnMapRe
     ImageLoader imageLoader;
     GoogleMap mMap;
     static String STATE_RESTAUTANT = "NEW_RESTAURANT";
+    TextView review;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +77,39 @@ public class RestaurantInfoActivity extends AppCompatActivity implements OnMapRe
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_restaurant);
         mapFragment.getMapAsync(this);
+        review = (TextView)this.findViewById(R.id.review);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(business.name());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        YelpAPIFactory apiFactory = new YelpAPIFactory(getString(R.string.consumerKey),
+                getString(R.string.consumerSecret), getString(R.string.token), getString(R.string.tokenSecret));
+        YelpAPI yelpAPI = apiFactory.createAPI();
+
+        Call<Business> call = yelpAPI.getBusiness(business.id());
+
+        Callback<Business> callback = new Callback<Business>() {
+            @Override
+            public void onResponse(Call<Business> call, retrofit2.Response<Business> response) {
+                Business b = response.body();
+                Log.i("network errors", response.body().toString());
+                business = b;
+
+                if(business.reviews().size() > 0) {
+                    review.setText(business.reviews().get(0).excerpt() + " - " + business.reviews().get(0).user().name());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Business> call, Throwable t) {
+                // HTTP error happened, do something to handle it.
+                Log.i("network errors", t.getStackTrace().toString());
+            }
+        };
+
+        call.enqueue(callback);
     }
 
     private void fillFields() {
@@ -107,10 +145,6 @@ public class RestaurantInfoActivity extends AppCompatActivity implements OnMapRe
             restImage.setImageResource(R.drawable.ic_img_not_found);
         }
 
-        //TODO: find out what why I am not loading any reviews
-        //setReview
-        //TextView review = (TextView)this.findViewById(R.id.review);
-        //description.setText(business.reviews().get(0).excerpt());
     }
 
     @Override
