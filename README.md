@@ -2,7 +2,7 @@
 An App the utilizes the Yelp API to display restauraunts. 
 
 Download the .apk here 
-https://github.com/Peter-Wilson/FoodMe/blob/master/apk/app-debug.apk
+https://github.com/Peter-Wilson/FoodMe/blob/master/app/app-debug.apk
 
 
 # Finished App flow
