@@ -53,6 +53,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
     private RestaurantListFragment listFragment;
     private Context c = null;
     static final String STATE_BUSINESS = "Business";
+    public View loadingScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,8 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         //style the search var
         getWindow().setStatusBarColor(getResources().getColor(R.color.logored));
         initializeSearchBar();
+
+        loadingScreen = findViewById(R.id.loadingPanel);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -119,6 +122,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                 //Hide the keyboard
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
+                loadingScreen.setVisibility(View.VISIBLE);
                 SearchRestaurant(query);
                 return true;
 
@@ -166,6 +170,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                     Log.i("network errors", response.body().toString());
                     businesses = searchResponse.businesses();
                     listFragment.UpdateRestaurants(businesses);
+                    loadingScreen.setVisibility(View.GONE);
                     AddMarkers(businesses);
                 }
 
@@ -173,6 +178,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                 public void onFailure(Call<SearchResponse> call, Throwable t) {
                     // HTTP error happened, do something to handle it.
                     Log.i("network errors", t.getStackTrace().toString());
+                    loadingScreen.setVisibility(View.GONE);
                 }
             };
 
