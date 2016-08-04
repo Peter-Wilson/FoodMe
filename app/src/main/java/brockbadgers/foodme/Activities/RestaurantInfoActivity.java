@@ -79,7 +79,7 @@ public class RestaurantInfoActivity extends AppCompatActivity implements OnMapRe
                 Log.i("network errors", response.body().toString());
                 business = b;
 
-                if(business.reviews().size() > 0) {
+                if(business.reviews() != null && business.reviews().size() > 0) {
                     review.setText(business.reviews().get(0).excerpt() + " - " + business.reviews().get(0).user().name());
                 }
             }

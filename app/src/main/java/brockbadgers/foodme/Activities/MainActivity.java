@@ -136,10 +136,12 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
 
     public void sortRestaurants(RestaurantComparator.Order sortType)
     {
-        RestaurantComparator comparator = new RestaurantComparator(sortType);
-        Collections.sort(businesses, comparator); // now we have a sorted list
-        AddMarkers(businesses);
-        listFragment.UpdateRestaurants(businesses);
+        if(businesses != null) {
+            RestaurantComparator comparator = new RestaurantComparator(sortType);
+            Collections.sort(businesses, comparator); // now we have a sorted list
+            AddMarkers(businesses);
+            listFragment.UpdateRestaurants(businesses);
+        }
     }
 
     private void SearchRestaurant(String query) {
